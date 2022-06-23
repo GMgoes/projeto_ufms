@@ -1,46 +1,40 @@
 package com.projeto.videoaula;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+//Classe modelo
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+//@Data ver com o professor depois para configurar o lombok Data
 public class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_pessoa;   
-    
-    @Column(nullable = false)
+    private Long id_pessoa;   
+
     private String nome;
+
+    public Long getId_pessoa() {
+        return id_pessoa;
+    }
+
+    public void setId_pessoa(Long id_pessoa) {
+        this.id_pessoa = id_pessoa;
+    }
 
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
-    }
-    @Override
-    public int hashCode() {       
-        return getClass().hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Pessoa other = (Pessoa) obj;
-        return id_pessoa == other.id_pessoa;
-    }
-    @Override
-    public String toString() {
-        return "Pessoa [id_pessoa=" + id_pessoa + ", nome=" + nome + "]";
     }
     
 }
